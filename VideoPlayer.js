@@ -402,7 +402,6 @@ export default class VideoPlayer extends Component {
     _toggleFullscreen() {
         let state = this.state;
         state.isFullscreen = ! state.isFullscreen;
-        state.resizeMode = state.isFullscreen === true ? 'cover' : 'contain';
 
         this.setState( state );
 
