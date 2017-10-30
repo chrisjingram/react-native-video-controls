@@ -32,7 +32,7 @@ export default class VideoPlayer extends Component {
             volume: this.props.volume || 1,
             rate: this.props.rate || 1,
             // Controls
-            
+
             isFullscreen: this.props.resizeMode === 'cover' || false,
             showTimeRemaining: true,
             volumeTrackWidth: 0,
@@ -405,6 +405,11 @@ export default class VideoPlayer extends Component {
         state.resizeMode = state.isFullscreen === true ? 'cover' : 'contain';
 
         this.setState( state );
+
+        if(typeof this.props.didEnterFullscreen === 'function'){
+          this.props.didEnterFullscreen();
+        }
+
     }
 
     /**
@@ -486,7 +491,7 @@ export default class VideoPlayer extends Component {
 
         state.seekerFillWidth = position;
         state.seekerPosition = position;
-        
+
         if ( ! state.seeking ) {
             state.seekerOffset = position
         };
@@ -1012,7 +1017,7 @@ export default class VideoPlayer extends Component {
      * Renders an empty control, used to disable a control without breaking the view layout.
      */
     renderNullControl() {
-        return this.renderControl(<View></View>);   
+        return this.renderControl(<View></View>);
     }
 
 
