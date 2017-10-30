@@ -406,8 +406,8 @@ export default class VideoPlayer extends Component {
 
         this.setState( state );
 
-        if(typeof this.props.didEnterFullscreen === 'function'){
-          this.props.didEnterFullscreen();
+        if(typeof this.props.didToggleFullscreen === 'function'){
+          this.props.didToggleFullscreen(this.state.isFullscreen);
         }
 
     }
